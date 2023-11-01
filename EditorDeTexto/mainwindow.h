@@ -67,6 +67,10 @@ private slots:
 
     void on_actionAcerca_del_Auto_triggered();
 
+    void on_deshacer_clicked();
+
+    void on_rehacer_clicked();
+
 private:
     Ui::MainWindow *ui;
 

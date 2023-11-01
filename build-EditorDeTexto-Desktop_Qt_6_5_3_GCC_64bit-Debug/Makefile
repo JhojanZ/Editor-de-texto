@@ -1112,6 +1112,7 @@ mainwindow.o: ../EditorDeTexto/mainwindow.cpp ../EditorDeTexto/mainwindow.h \
 		ui_mainwindow.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtCore/QVariant \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/QAction \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/QIcon \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QApplication \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qapplication.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1134,18 +1135,36 @@ mainwindow.o: ../EditorDeTexto/mainwindow.cpp ../EditorDeTexto/mainwindow.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qinputmethod.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtCore/qlocale.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qguiapplication_platform.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QFontComboBox \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qfontcombobox.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qcombobox.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qvalidator.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtCore/qregularexpression.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qslider.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qstyle.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qframe.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qfontdatabase.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QFrame \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QGroupBox \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qgroupbox.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QMenu \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qmenu.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QMenuBar \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qmenubar.h \
-		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QRadioButton \
-		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qradiobutton.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QSpinBox \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qspinbox.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QStatusBar \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qstatusbar.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QTextEdit \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qframe.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qtextdocument.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qtextoption.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qtextcursor.h \
@@ -1178,7 +1197,11 @@ mainwindow.o: ../EditorDeTexto/mainwindow.cpp ../EditorDeTexto/mainwindow.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qpagedpaintdevice.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qpagelayout.h \
 		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qpagesize.h \
-		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qpageranges.h
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/qpageranges.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/QFontDatabase \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/QColorDialog \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtWidgets/qcolordialog.h \
+		/home/felipe/Qt/6.5.3/gcc_64/include/QtGui/QKeyEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../EditorDeTexto/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

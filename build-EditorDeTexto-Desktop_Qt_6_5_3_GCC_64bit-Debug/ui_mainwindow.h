@@ -55,6 +55,8 @@ public:
     QFontComboBox *fuentes;
     QFrame *line;
     QPushButton *imprimirPDF;
+    QPushButton *deshacer;
+    QPushButton *rehacer;
     QMenuBar *menubar;
     QMenu *menuArchivo;
     QMenu *menuAcerca_De;
@@ -93,7 +95,7 @@ public:
 "color: rgb(0, 0, 0);"));
         negrilla = new QPushButton(centralwidget);
         negrilla->setObjectName("negrilla");
-        negrilla->setGeometry(QRect(110, 30, 31, 25));
+        negrilla->setGeometry(QRect(110, 10, 31, 25));
         QIcon icon;
         QString iconThemeName = QString::fromUtf8("format-text-bold");
         if (QIcon::hasThemeIcon(iconThemeName)) {
@@ -104,7 +106,7 @@ public:
         negrilla->setIcon(icon);
         subrayar = new QPushButton(centralwidget);
         subrayar->setObjectName("subrayar");
-        subrayar->setGeometry(QRect(150, 30, 31, 25));
+        subrayar->setGeometry(QRect(150, 10, 31, 25));
         QIcon icon1;
         iconThemeName = QString::fromUtf8("format-text-underline");
         if (QIcon::hasThemeIcon(iconThemeName)) {
@@ -115,7 +117,7 @@ public:
         subrayar->setIcon(icon1);
         cursiva = new QPushButton(centralwidget);
         cursiva->setObjectName("cursiva");
-        cursiva->setGeometry(QRect(190, 30, 31, 25));
+        cursiva->setGeometry(QRect(190, 10, 31, 25));
         QIcon icon2;
         iconThemeName = QString::fromUtf8("format-text-italic");
         if (QIcon::hasThemeIcon(iconThemeName)) {
@@ -127,7 +129,13 @@ public:
         color = new QPushButton(centralwidget);
         color->setObjectName("color");
         color->setGeometry(QRect(590, 10, 31, 25));
-        QIcon icon3(QIcon::fromTheme(QString::fromUtf8("applications-graphics")));
+        QIcon icon3;
+        iconThemeName = QString::fromUtf8("applications-graphics");
+        if (QIcon::hasThemeIcon(iconThemeName)) {
+            icon3 = QIcon::fromTheme(iconThemeName);
+        } else {
+            icon3.addFile(QString::fromUtf8("."), QSize(), QIcon::Normal, QIcon::Off);
+        }
         color->setIcon(icon3);
         tamano = new QPushButton(centralwidget);
         tamano->setObjectName("tamano");
@@ -183,7 +191,7 @@ public:
         tamanoLetra->setValue(12);
         tachado = new QPushButton(centralwidget);
         tachado->setObjectName("tachado");
-        tachado->setGeometry(QRect(230, 30, 31, 25));
+        tachado->setGeometry(QRect(230, 10, 31, 25));
         QIcon icon8;
         iconThemeName = QString::fromUtf8("format-text-strikethrough");
         if (QIcon::hasThemeIcon(iconThemeName)) {
@@ -195,12 +203,24 @@ public:
         aumentarTamano = new QPushButton(centralwidget);
         aumentarTamano->setObjectName("aumentarTamano");
         aumentarTamano->setGeometry(QRect(330, 40, 31, 25));
-        QIcon icon9(QIcon::fromTheme(QString::fromUtf8("go-up")));
+        QIcon icon9;
+        iconThemeName = QString::fromUtf8("go-up");
+        if (QIcon::hasThemeIcon(iconThemeName)) {
+            icon9 = QIcon::fromTheme(iconThemeName);
+        } else {
+            icon9.addFile(QString::fromUtf8("."), QSize(), QIcon::Normal, QIcon::Off);
+        }
         aumentarTamano->setIcon(icon9);
         disminuirTamano = new QPushButton(centralwidget);
         disminuirTamano->setObjectName("disminuirTamano");
         disminuirTamano->setGeometry(QRect(370, 40, 31, 25));
-        QIcon icon10(QIcon::fromTheme(QString::fromUtf8("go-down")));
+        QIcon icon10;
+        iconThemeName = QString::fromUtf8("go-down");
+        if (QIcon::hasThemeIcon(iconThemeName)) {
+            icon10 = QIcon::fromTheme(iconThemeName);
+        } else {
+            icon10.addFile(QString::fromUtf8("."), QSize(), QIcon::Normal, QIcon::Off);
+        }
         disminuirTamano->setIcon(icon10);
         fuentes = new QFontComboBox(centralwidget);
         fuentes->setObjectName("fuentes");
@@ -213,8 +233,24 @@ public:
         imprimirPDF = new QPushButton(centralwidget);
         imprimirPDF->setObjectName("imprimirPDF");
         imprimirPDF->setGeometry(QRect(630, 10, 31, 25));
-        QIcon icon11(QIcon::fromTheme(QString::fromUtf8("printer")));
+        QIcon icon11;
+        iconThemeName = QString::fromUtf8("printer");
+        if (QIcon::hasThemeIcon(iconThemeName)) {
+            icon11 = QIcon::fromTheme(iconThemeName);
+        } else {
+            icon11.addFile(QString::fromUtf8("."), QSize(), QIcon::Normal, QIcon::Off);
+        }
         imprimirPDF->setIcon(icon11);
+        deshacer = new QPushButton(centralwidget);
+        deshacer->setObjectName("deshacer");
+        deshacer->setGeometry(QRect(120, 40, 51, 25));
+        QIcon icon12(QIcon::fromTheme(QString::fromUtf8("edit-undo")));
+        deshacer->setIcon(icon12);
+        rehacer = new QPushButton(centralwidget);
+        rehacer->setObjectName("rehacer");
+        rehacer->setGeometry(QRect(200, 40, 51, 25));
+        QIcon icon13(QIcon::fromTheme(QString::fromUtf8("edit-redo")));
+        rehacer->setIcon(icon13);
         MainWindow->setCentralWidget(centralwidget);
         line->raise();
         editorDeTexto->raise();
@@ -233,6 +269,8 @@ public:
         disminuirTamano->raise();
         fuentes->raise();
         imprimirPDF->raise();
+        deshacer->raise();
+        rehacer->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 800, 22));

@@ -227,6 +227,21 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)//DONE
     } else {
         QMainWindow::keyPressEvent(evento); // Continúa el procesamiento de eventos normales
     }
+
+
+    /*
+
+    // Color (se aplica solo al escribir)
+    if (evento->modifiers() == Qt::NoModifier && evento->text() != "") {
+        QTextCursor cursor = ui->editorDeTexto->textCursor();
+        cursor.movePosition(QTextCursor::End);
+        cursor.setCharFormat(colorSeleccionado); // Aplicar formato de color
+        cursor.insertText(evento->text()); // Insertar el texto del evento
+    } else {
+        QMainWindow::keyPressEvent(evento);
+    }
+
+    */
 }
 
 // ----------------------------------------Funciones de Diseño de Texto //Falta corregir el cursor
@@ -359,6 +374,23 @@ void MainWindow::on_color_clicked()//DONE
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
 }
+
+/*void MainWindow::on_color_clicked()
+{
+    //QColor color = QColorDialog::getColor(Qt::black, this, "Seleccionar color de fuente");
+    QColor color = QColorDialog::getColor(Qt::black, this, "Seleccionar color de fuente");
+    if (color.isValid()) {
+        colorSeleccionado = color;
+
+        // Guarda el color seleccionado sin aplicarlo inmediatamente
+        formatoColor = QTextCharFormat();
+        formatoColor.setForeground(QBrush(color));
+    }
+}
+*/
+
+
+
 
 //Tamaños //DONE
 void MainWindow::on_tamano_clicked()
@@ -554,3 +586,15 @@ void MainWindow::on_actionAcerca_del_Auto_triggered() //DONE
     QPushButton *salir = confirmar.addButton("Salir", QMessageBox::AcceptRole);
     confirmar.exec();
 }
+
+void MainWindow::on_deshacer_clicked()
+{
+    ui->editorDeTexto->undo();
+}
+
+
+void MainWindow::on_rehacer_clicked()
+{
+    ui->editorDeTexto->redo();
+}
+
