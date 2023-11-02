@@ -303,11 +303,29 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionNuevo->setText(QCoreApplication::translate("MainWindow", "Nuevo", nullptr));
+#if QT_CONFIG(shortcut)
+        actionNuevo->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+U", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionAbrir->setText(QCoreApplication::translate("MainWindow", "Abrir", nullptr));
+#if QT_CONFIG(shortcut)
+        actionAbrir->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+A", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionGuardar->setText(QCoreApplication::translate("MainWindow", "Guardar", nullptr));
+#if QT_CONFIG(shortcut)
+        actionGuardar->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+S", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionExportar->setText(QCoreApplication::translate("MainWindow", "Imprimir", nullptr));
+#if QT_CONFIG(shortcut)
+        actionExportar->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+P", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionSalir->setText(QCoreApplication::translate("MainWindow", "Salir", nullptr));
+#if QT_CONFIG(shortcut)
+        actionSalir->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+W", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionEliminar->setText(QCoreApplication::translate("MainWindow", "Eliminar", nullptr));
+#if QT_CONFIG(shortcut)
+        actionEliminar->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Del", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionAcerca_del_Auto->setText(QCoreApplication::translate("MainWindow", "Acerca del Autor", nullptr));
         actionComandos->setText(QCoreApplication::translate("MainWindow", "Comandos", nullptr));
         negrilla->setText(QString());

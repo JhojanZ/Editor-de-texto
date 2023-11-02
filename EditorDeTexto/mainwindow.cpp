@@ -2,21 +2,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QString>
-#include <QDebug>
-#include <QDialog>
-#include <QFileDialog>
-#include <QFile>
-#include <QTextStream>
-#include <QMessageBox>
-#include <QTextDocument>
-#include <QTextCursor>
-#include <QPrinter>
-#include <QFontDatabase>
-#include <QColorDialog>
-#include <QKeyEvent>
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -61,24 +46,19 @@ void MainWindow::on_actionGuardar_triggered() //DONE
     if(direccionArchivo.isEmpty()){
         direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto (*.txt);;Todos los archivos (*.*)");
         if(!direccionArchivo.isEmpty()){
-            QFile archivo(direccionArchivo);
-            if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
-                QTextStream out(&archivo);
-                out<<ui->editorDeTexto->toPlainText();
-                archivo.close();
-            } else {
-                QMessageBox::critical(this, "Error", "No se pudo crear el archivo.");
-            }
+            guardarArchivo(direccionArchivo);
         }
     }else{
-        QFile archivo(direccionArchivo);
-        if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            QTextStream out(&archivo);
-            out<<ui->editorDeTexto->toPlainText();
-            archivo.close();
-        } else {
-            QMessageBox::critical(this, "Error", "No se pudo crear el archivo.");
-        }
+        guardarArchivo(direccionArchivo);
+    }
+}
+void MainWindow::guardarArchivo(QFile archivo){
+    if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream out(&archivo);
+        out<<ui->editorDeTexto->toPlainText();
+        archivo.close();
+    } else {
+        QMessageBox::critical(this, "Error", "No se pudo crear el archivo.");
     }
 }
 
@@ -107,131 +87,26 @@ void MainWindow::on_actionEliminar_triggered() //DONE
 void MainWindow::on_actionSalir_triggered() //DONE
 {
     QMessageBox confirmar;
-    confirmar.setText("        ¿Seguro de que quieres salir?\n\nTodo progreso sin guardar se perdera.");
+    confirmar.setText("\t¿Seguro de que quieres salir?\n\nTodo progreso sin guardar se perdera.");
 
     QPushButton *aceptar = confirmar.addButton("Aceptar", QMessageBox::AcceptRole);
     QPushButton *cancelar = confirmar.addButton("Cancelar", QMessageBox::RejectRole);
     confirmar.exec();
 
-    if (confirmar.clickedButton() == aceptar) {
+    if (confirmar.clickedButton() == aceptar){
         close();
+    }else if(confirmar.clickedButton() == cancelar){
+        //No hacer nada
     }
 }
 
 //----------------------------------------Funciones con Comandos
 
+
 void MainWindow::keyPressEvent(QKeyEvent *evento)//DONE
 {
-    //Nuevo
-    if (evento->modifiers() == Qt::ControlModifier && evento->key() == Qt::Key_U) {
-        MainWindow *nuevaVentana = new MainWindow();
-        nuevaVentana->show();
-        on_actionGuardar_triggered();
-    } else {
-        QMainWindow::keyPressEvent(evento);
-    }
 
-    //Abrir
-    if (evento->modifiers() == Qt::ControlModifier && evento->key() == Qt::Key_A) {
-        direccionArchivo = QFileDialog::getOpenFileName(this, "Abrir Archivo", QDir::homePath());
-        if (!direccionArchivo.isEmpty()) {
-            QFile archivo(direccionArchivo);
-            if(archivo.open(QIODevice::ReadOnly | QIODevice::Text)){
-                QTextStream in(&archivo);
-                if(archivo.size() == 0){
-                    QMessageBox::information(this, "Archivo vacío", "El archivo está vacío.");
-                }else{
-                    QString contenidoDelArchivo = in.readAll();
-                    ui->editorDeTexto->setPlainText(contenidoDelArchivo);
-                }
-                archivo.close();
-            }else {
-                QMessageBox::critical(this, "Error", "No se pudo abrir el archivo.");
-            }
-        }
-        on_actionGuardar_triggered();
-    } else {
-        QMainWindow::keyPressEvent(evento);
-    }
-
-    //Guardar
-    if (evento->modifiers() == Qt::ControlModifier && evento->key() == Qt::Key_S) {
-        if(direccionArchivo.isEmpty()){
-            direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto (*.txt);;Todos los archivos (*.*)");
-            if(!direccionArchivo.isEmpty()){
-                QFile archivo(direccionArchivo);
-                if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
-                    QTextStream out(&archivo);
-                    out<<ui->editorDeTexto->toPlainText();
-                    archivo.close();
-                } else {
-                    QMessageBox::critical(this, "Error", "No se pudo crear el archivo.");
-                }
-            }
-        }else{
-            QFile archivo(direccionArchivo);
-            if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
-                QTextStream out(&archivo);
-                out<<ui->editorDeTexto->toPlainText();
-                archivo.close();
-            } else {
-                QMessageBox::critical(this, "Error", "No se pudo crear el archivo.");
-            }
-        }
-        on_actionGuardar_triggered();
-    } else {
-        QMainWindow::keyPressEvent(evento); // Continúa el procesamiento de eventos normales
-    }
-
-    //Exportar
-    if (evento->modifiers() == Qt::ControlModifier && evento->key() == Qt::Key_P) {
-        QString direccionArchivo = QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)");
-        if (!direccionArchivo.isEmpty()) {
-            QTextDocument documento;
-            QTextCursor cursor(&documento);
-            cursor.insertText(ui->editorDeTexto->toPlainText());
-
-            QPrinter imprimir(QPrinter::PrinterResolution);
-            imprimir.setOutputFormat(QPrinter::PdfFormat);
-            imprimir.setOutputFileName(direccionArchivo);
-            documento.print(&imprimir);
-        }
-        on_actionGuardar_triggered();
-    } else {
-        QMainWindow::keyPressEvent(evento); // Continúa el procesamiento de eventos normales
-    }
-
-    //Eliminar
-    if (evento->modifiers() == Qt::ControlModifier && evento->key() == Qt::Key_Delete) {
-        QFile archivo(direccionArchivo);
-        archivo.remove();
-        ui->editorDeTexto->setText("");
-        on_actionGuardar_triggered();
-    } else {
-        QMainWindow::keyPressEvent(evento); // Continúa el procesamiento de eventos normales
-    }
-
-    //Salir
-    if (evento->modifiers() == Qt::ControlModifier && evento->key() == Qt::Key_W) {
-        QMessageBox confirmar;
-        confirmar.setText("        ¿Seguro de que quieres salir?\n\nTodo progreso sin guardar se perdera.");
-
-        QPushButton *aceptar = confirmar.addButton("Aceptar", QMessageBox::AcceptRole);
-        QPushButton *cancelar = confirmar.addButton("Cancelar", QMessageBox::RejectRole);
-        confirmar.exec();
-
-        if (confirmar.clickedButton() == aceptar) {
-            close();
-        }
-        on_actionGuardar_triggered();
-    } else {
-        QMainWindow::keyPressEvent(evento); // Continúa el procesamiento de eventos normales
-    }
-
-
-    /*
-
-    // Color (se aplica solo al escribir)
+    /* Color (se aplica solo al escribir)
     if (evento->modifiers() == Qt::NoModifier && evento->text() != "") {
         QTextCursor cursor = ui->editorDeTexto->textCursor();
         cursor.movePosition(QTextCursor::End);
@@ -239,9 +114,8 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)//DONE
         cursor.insertText(evento->text()); // Insertar el texto del evento
     } else {
         QMainWindow::keyPressEvent(evento);
-    }
+    }*/
 
-    */
 }
 
 // ----------------------------------------Funciones de Diseño de Texto //Falta corregir el cursor
@@ -457,84 +331,33 @@ void MainWindow::on_disminuirTamano_clicked()
 //Alineados //DONE
 void MainWindow::on_alineadoIzquierda_clicked()
 {
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    int inicio = (ui->editorDeTexto->textCursor().selectionStart()) + (ui->editorDeTexto->textCursor().selectedText().length());
-    if (cursor.hasSelection()) {
-        QTextBlockFormat formatoDelBloque = cursor.blockFormat();
-        formatoDelBloque.setAlignment(Qt::AlignLeft);
-        cursor.mergeBlockFormat(formatoDelBloque);
-    } else {
-        QTextCursor inicioDelBloque = cursor;
-        inicioDelBloque.movePosition(QTextCursor::StartOfBlock);
-        cursor.movePosition(QTextCursor::EndOfBlock);
-        QTextBlockFormat formatoDelBloque = inicioDelBloque.blockFormat();
-        formatoDelBloque.setAlignment(Qt::AlignLeft);
-        inicioDelBloque.setBlockFormat(formatoDelBloque);
-        cursor.setBlockFormat(formatoDelBloque);
-    }
-    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
-    cursor.clearSelection();
-    ui->editorDeTexto->setTextCursor(cursor);
-    ui->editorDeTexto->setFocus();
+    alinear(Qt::AlignLeft);
 }
 void MainWindow::on_alineadoCentrado_clicked()
 {
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    int inicio = (ui->editorDeTexto->textCursor().selectionStart()) + (ui->editorDeTexto->textCursor().selectedText().length());
-    if (cursor.hasSelection()) {
-        QTextBlockFormat formatoDelBloque = cursor.blockFormat();
-        formatoDelBloque.setAlignment(Qt::AlignCenter);
-        cursor.mergeBlockFormat(formatoDelBloque);
-    } else {
-        QTextCursor inicioDelBloque = cursor;
-        inicioDelBloque.movePosition(QTextCursor::StartOfBlock);
-        cursor.movePosition(QTextCursor::EndOfBlock);
-        QTextBlockFormat formatoDelBloque = inicioDelBloque.blockFormat();
-        formatoDelBloque.setAlignment(Qt::AlignCenter);
-        inicioDelBloque.setBlockFormat(formatoDelBloque);
-        cursor.setBlockFormat(formatoDelBloque);
-    }
-    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
-    cursor.clearSelection();
-    ui->editorDeTexto->setTextCursor(cursor);
-    ui->editorDeTexto->setFocus();
+    alinear(Qt::AlignCenter);
 }
 void MainWindow::on_alineadoDerecha_clicked()
 {
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    int inicio = (ui->editorDeTexto->textCursor().selectionStart()) + (ui->editorDeTexto->textCursor().selectedText().length());
-    if (cursor.hasSelection()) {
-        QTextBlockFormat formatoDelBloque = cursor.blockFormat();
-        formatoDelBloque.setAlignment(Qt::AlignRight);
-        cursor.mergeBlockFormat(formatoDelBloque);
-    } else {
-        QTextCursor inicioDelBloque = cursor;
-        inicioDelBloque.movePosition(QTextCursor::StartOfBlock);
-        cursor.movePosition(QTextCursor::EndOfBlock);
-        QTextBlockFormat formatoDelBloque = inicioDelBloque.blockFormat();
-        formatoDelBloque.setAlignment(Qt::AlignRight);
-        inicioDelBloque.setBlockFormat(formatoDelBloque);
-        cursor.setBlockFormat(formatoDelBloque);
-    }
-    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
-    cursor.clearSelection();
-    ui->editorDeTexto->setTextCursor(cursor);
-    ui->editorDeTexto->setFocus();
+    alinear(Qt::AlignRight);
 }
 void MainWindow::on_alineadoJustificado_clicked()
 {
+    alinear(Qt::AlignJustify);
+}
+void MainWindow::alinear(Qt::AlignmentFlag modo){
     QTextCursor cursor = ui->editorDeTexto->textCursor();
     int inicio = (ui->editorDeTexto->textCursor().selectionStart()) + (ui->editorDeTexto->textCursor().selectedText().length());
     if (cursor.hasSelection()) {
         QTextBlockFormat formatoDelBloque = cursor.blockFormat();
-        formatoDelBloque.setAlignment(Qt::AlignJustify);
+        formatoDelBloque.setAlignment(modo);
         cursor.mergeBlockFormat(formatoDelBloque);
     } else {
         QTextCursor inicioDelBloque = cursor;
         inicioDelBloque.movePosition(QTextCursor::StartOfBlock);
         cursor.movePosition(QTextCursor::EndOfBlock);
         QTextBlockFormat formatoDelBloque = inicioDelBloque.blockFormat();
-        formatoDelBloque.setAlignment(Qt::AlignJustify);
+        formatoDelBloque.setAlignment(modo);
         inicioDelBloque.setBlockFormat(formatoDelBloque);
         cursor.setBlockFormat(formatoDelBloque);
     }
@@ -543,6 +366,7 @@ void MainWindow::on_alineadoJustificado_clicked()
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
 }
+
 
 void MainWindow::on_fuentes_currentFontChanged(const QFont &f)//DONE
 {
@@ -568,33 +392,31 @@ void MainWindow::on_imprimirPDF_clicked() //DONE
     }
 }
 
-//------------------------------------------ Extra
-void MainWindow::on_actionComandos_triggered() //DONE
-{
-    QMessageBox confirmar;
-    confirmar.setText("Lista de comandos de la aplicación:\n\n\n- Nuevo: Ctrl+U\n- Abrir: Ctrl+A\n- Guardar: Ctrl+S\n- Imprimir: Ctrl+P\n- Eliminar: Ctrl+Delete  o  Ctrl+Supr\n-  Salir: Ctrl+W\n");
-
-    QPushButton *salir = confirmar.addButton("Salir", QMessageBox::AcceptRole);
-    confirmar.exec();
-}
-
-void MainWindow::on_actionAcerca_del_Auto_triggered() //DONE
-{
-    QMessageBox confirmar;
-    confirmar.setText("Proyecto creado por:\n\nJhojan Felipe Sánchez Zapata");
-
-    QPushButton *salir = confirmar.addButton("Salir", QMessageBox::AcceptRole);
-    confirmar.exec();
-}
-
 void MainWindow::on_deshacer_clicked()
 {
     ui->editorDeTexto->undo();
 }
-
-
 void MainWindow::on_rehacer_clicked()
 {
     ui->editorDeTexto->redo();
 }
 
+//------------------------------------------ Extra
+void MainWindow::on_actionComandos_triggered() //DONE
+{
+    infoVentana("Lista de comandos de la aplicación:\n\n\n- Nuevo: Ctrl+U\n- Abrir: Ctrl+A\n- Guardar: Ctrl+S\n- Imprimir: Ctrl+P\n- Eliminar: Ctrl+Delete  o  Ctrl+Supr\n-  Salir: Ctrl+W\n");
+}
+void MainWindow::on_actionAcerca_del_Auto_triggered() //DONE
+{
+    infoVentana("Proyecto creado por:\n\nJhojan Felipe Sánchez Zapata");
+}
+void MainWindow::infoVentana(QString mensaje){
+    QMessageBox confirmar;
+    confirmar.setText(mensaje);
+
+    QPushButton *salir = confirmar.addButton("Salir", QMessageBox::AcceptRole);
+    if(confirmar.clickedButton() == salir){
+        //No hacer nada
+    }
+    confirmar.exec();
+}

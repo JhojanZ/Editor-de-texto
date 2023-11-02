@@ -1,8 +1,23 @@
-#ifndef MAINWINDOW_H
+    #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QPushButton>
+
+#include <QString>
+#include <QDebug>
+#include <QDialog>
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+#include <QTextDocument>
+#include <QTextCursor>
+#include <QPrinter>
+#include <QFontDatabase>
+#include <QColorDialog>
+#include <QKeyEvent>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,6 +30,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void guardarArchivo(QFile archivo);
+
+    void alinear(Qt::AlignmentFlag modo);
+
+    void infoVentana(QString mensaje);
 
 private:
     QPushButton *tipoTriggerButton;
