@@ -44,7 +44,7 @@ void MainWindow::on_actionAbrir_triggered() //DONE
 void MainWindow::on_actionGuardar_triggered() //DONE
 {
     if(direccionArchivo.isEmpty()){
-        direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto (*.txt);;Todos los archivos (*.*)");
+        direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto (*.txt);;Archivos de texto enriquecido(*.rtf);;Todos los archivos (*.*)");
         if(!direccionArchivo.isEmpty()){
             guardarArchivo(direccionArchivo);
         }
@@ -52,10 +52,11 @@ void MainWindow::on_actionGuardar_triggered() //DONE
         guardarArchivo(direccionArchivo);
     }
 }
-void MainWindow::guardarArchivo(QFile archivo){
+void MainWindow::guardarArchivo(QString nombreArchivo){
+    QFile archivo(nombreArchivo);
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QTextStream out(&archivo);
-        out<<ui->editorDeTexto->toPlainText();
+        QTextStream insertar(&archivo);
+        insertar<<ui->editorDeTexto->toHtml();
         archivo.close();
     } else {
         QMessageBox::critical(this, "Error", "No se pudo crear el archivo.");
@@ -64,7 +65,10 @@ void MainWindow::guardarArchivo(QFile archivo){
 
 void MainWindow::on_actionExportar_triggered() //DONE
 {
-    QString direccionArchivo = QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)");
+    guardarPDF(QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)"));
+}
+void MainWindow::guardarPDF(QString direccionArchivo)
+{
     if (!direccionArchivo.isEmpty()) {
         QTextDocument documento;
         QTextCursor cursor(&documento);
@@ -379,17 +383,7 @@ void MainWindow::on_fuentes_currentFontChanged(const QFont &f)//DONE
 
 void MainWindow::on_imprimirPDF_clicked() //DONE
 {
-    QString direccionArchivo = QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)");
-    if (!direccionArchivo.isEmpty()) {
-        QTextDocument documento;
-        QTextCursor cursor(&documento);
-        cursor.insertText(ui->editorDeTexto->toPlainText());
-
-        QPrinter imprimir(QPrinter::PrinterResolution);
-        imprimir.setOutputFormat(QPrinter::PdfFormat);
-        imprimir.setOutputFileName(direccionArchivo);
-        documento.print(&imprimir);
-    }
+    guardarPDF(QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)"));
 }
 
 void MainWindow::on_deshacer_clicked()

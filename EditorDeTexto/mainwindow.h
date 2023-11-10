@@ -31,11 +31,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void guardarArchivo(QFile archivo);
+    void guardarArchivo(QString nombreArchivo);
 
     void alinear(Qt::AlignmentFlag modo);
 
     void infoVentana(QString mensaje);
+
+    void guardarPDF(QString direccionArchivo);
 
 private:
     QPushButton *tipoTriggerButton;
