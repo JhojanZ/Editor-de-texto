@@ -427,3 +427,5 @@ void MainWindow::infoVentana(QString mensaje){
     }
     confirmar.exec();
 }
+
+//AGREGAR PAGINAS
