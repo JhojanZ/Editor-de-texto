@@ -186,8 +186,7 @@ color: rgb(0, 0, 0);</string>
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>Iconos/alineacion-del-texto.png</normaloff>Iconos/alineacion-del-texto.png</iconset>
+     <iconset theme="format-justify-left"/>
     </property>
    </widget>
    <widget class="QSpinBox" name="tamanoLetra">
@@ -341,7 +340,8 @@ color: rgb(0, 0, 0);</string>
      <string/>
     </property>
     <property name="icon">
-     <iconset theme="document-save"/>
+     <iconset theme="document-save">
+      <normaloff>.</normaloff>.</iconset>
     </property>
     <property name="autoDefault">
      <bool>false</bool>
