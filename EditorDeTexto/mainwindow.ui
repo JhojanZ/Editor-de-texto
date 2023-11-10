@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>771</width>
     <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Editor De Texto</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(222, 221, 218);
@@ -24,8 +24,14 @@ color: rgb(0, 0, 0);</string>
       <x>100</x>
       <y>80</y>
       <width>591</width>
-      <height>471</height>
+      <height>411</height>
      </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>591</width>
+      <height>16777215</height>
+     </size>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
@@ -180,8 +186,8 @@ color: rgb(0, 0, 0);</string>
      <string/>
     </property>
     <property name="icon">
-     <iconset theme="format-justify-left">
-      <normaloff>.</normaloff>.</iconset>
+     <iconset>
+      <normaloff>Iconos/alineacion-del-texto.png</normaloff>Iconos/alineacion-del-texto.png</iconset>
     </property>
    </widget>
    <widget class="QSpinBox" name="tamanoLetra">
@@ -253,7 +259,7 @@ color: rgb(0, 0, 0);</string>
      <rect>
       <x>420</x>
       <y>40</y>
-      <width>251</width>
+      <width>261</width>
       <height>25</height>
      </rect>
     </property>
@@ -277,7 +283,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QPushButton" name="imprimirPDF">
     <property name="geometry">
      <rect>
-      <x>630</x>
+      <x>640</x>
       <y>10</y>
       <width>31</width>
       <height>25</height>
@@ -301,7 +307,8 @@ color: rgb(0, 0, 0);</string>
      </rect>
     </property>
     <property name="icon">
-     <iconset theme="edit-undo"/>
+     <iconset theme="edit-undo">
+      <normaloff>.</normaloff>.</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="rehacer">
@@ -314,7 +321,36 @@ color: rgb(0, 0, 0);</string>
      </rect>
     </property>
     <property name="icon">
-     <iconset theme="edit-redo"/>
+     <iconset theme="edit-redo">
+      <normaloff>.</normaloff>.</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="guardar">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>80</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset theme="document-save"/>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <zorder>line</zorder>
@@ -336,13 +372,14 @@ color: rgb(0, 0, 0);</string>
    <zorder>imprimirPDF</zorder>
    <zorder>deshacer</zorder>
    <zorder>rehacer</zorder>
+   <zorder>guardar</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>771</width>
      <height>22</height>
     </rect>
    </property>

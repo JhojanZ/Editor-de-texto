@@ -94,6 +94,8 @@ private slots:
 
     void on_rehacer_clicked();
 
+    void on_guardar_clicked();
+
 private:
     Ui::MainWindow *ui;
 
