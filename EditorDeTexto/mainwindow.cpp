@@ -386,6 +386,19 @@ void MainWindow::on_imprimirPDF_clicked() //DONE
     guardarPDF(QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)"));
 }
 
+void MainWindow::on_guardar_clicked()
+{
+    //unificar señales para solo usar una funcion
+    if(direccionArchivo.isEmpty()){
+        direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto (*.txt);;Archivos de texto enriquecido(*.rtf);;Todos los archivos (*.*)");
+        if(!direccionArchivo.isEmpty()){
+            guardarArchivo(direccionArchivo);
+        }
+    }else{
+        guardarArchivo(direccionArchivo);
+    }
+}
+
 void MainWindow::on_deshacer_clicked()
 {
     ui->editorDeTexto->undo();
@@ -398,11 +411,11 @@ void MainWindow::on_rehacer_clicked()
 //------------------------------------------ Extra
 void MainWindow::on_actionComandos_triggered() //DONE
 {
-    infoVentana("Lista de comandos de la aplicación:\n\n\n- Nuevo: Ctrl+U\n- Abrir: Ctrl+A\n- Guardar: Ctrl+S\n- Imprimir: Ctrl+P\n- Eliminar: Ctrl+Delete  o  Ctrl+Supr\n-  Salir: Ctrl+W\n");
+    infoVentana("Lista de comandos de la aplicación:                 \n\n\n- Nuevo: Ctrl+U\n- Abrir: Ctrl+A\n- Guardar: Ctrl+S\n- Imprimir: Ctrl+P\n- Eliminar: Ctrl+Delete  o  Ctrl+Supr\n-  Salir: Ctrl+W\n");
 }
 void MainWindow::on_actionAcerca_del_Auto_triggered() //DONE
 {
-    infoVentana("Proyecto creado por:\n\nJhojan Felipe Sánchez Zapata");
+    infoVentana("Proyecto creado por:\n\nJhojan Felipe Sánchez Zapata\n\n\nFuentes de las imagenes:\n\nhttps://www.flaticon.es/iconos-gratis/texto\nTexto iconos creados por Lizel Arina - Flaticon\nAlinear al centro iconos creados por Arkinasi - Flaticon");
 }
 void MainWindow::infoVentana(QString mensaje){
     QMessageBox confirmar;
