@@ -232,43 +232,26 @@ void MainWindow::on_color_clicked()//DONE
     QTextCursor cursor = ui->editorDeTexto->textCursor();
     QTextCharFormat formato = cursor.charFormat();
     int inicio = ui->editorDeTexto->textCursor().selectionStart();
-    //
+    int longitud = ui->editorDeTexto->textCursor().selectedText().length();
     if (color.isValid()) {
-        colorSeleccionado = color;
-        formato.setForeground(QBrush(color));
+        formato.setForeground(color);
         if (cursor.hasSelection()) {
             cursor.mergeCharFormat(formato);
+            ui->editorDeTexto->mergeCurrentCharFormat(formato);
         } else {
-            //formato.setForeground(QBrush(color));
-            //cursor.mergeCharFormat(formato);
-            ui->editorDeTexto->insertPlainText(" l");
-            cursor.setPosition(inicio+2);
-            cursor.movePosition(QTextCursor::StartOfWord, QTextCursor::KeepAnchor);
+            //ui->editorDeTexto->insertPlainText("  ");
+            //cursor.setPosition(inicio+2);
+            //cursor.movePosition(QTextCursor::StartOfWord, QTextCursor::KeepAnchor);
             cursor.mergeCharFormat(formato);
+            ui->editorDeTexto->mergeCurrentCharFormat(formato);
         }
     }
-    cursor.setPosition(inicio+2, QTextCursor::MoveAnchor);
+    inicio += longitud;
+    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
     cursor.clearSelection();
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
 }
-
-/*void MainWindow::on_color_clicked()
-{
-    //QColor color = QColorDialog::getColor(Qt::black, this, "Seleccionar color de fuente");
-    QColor color = QColorDialog::getColor(Qt::black, this, "Seleccionar color de fuente");
-    if (color.isValid()) {
-        colorSeleccionado = color;
-
-        // Guarda el color seleccionado sin aplicarlo inmediatamente
-        formatoColor = QTextCharFormat();
-        formatoColor.setForeground(QBrush(color));
-    }
-}
-*/
-
-
-
 
 //Tamaños //DONE
 void MainWindow::on_tamano_clicked()
