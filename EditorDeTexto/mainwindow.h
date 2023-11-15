@@ -18,6 +18,9 @@
 #include <QColorDialog>
 #include <QKeyEvent>
 
+#include <QTextEdit>
+#include <QVBoxLayout>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -46,6 +49,7 @@ protected:
     void keyPressEvent(QKeyEvent *evento) override;
 
 private slots:
+    //funcionesArchivos
     void on_actionNuevo_triggered();
 
     void on_actionGuardar_triggered();
@@ -56,6 +60,11 @@ private slots:
 
     void on_actionExportar_triggered();
 
+    void on_imprimirPDF_clicked();
+
+    void on_guardar_clicked();
+
+    //editarTexto
     void on_subrayar_clicked();
 
     void on_negrilla_clicked();
@@ -84,22 +93,22 @@ private slots:
 
     void on_fuentes_currentFontChanged(const QFont &f);
 
-    void on_imprimirPDF_clicked();
-
-    void on_actionComandos_triggered();
-
-    void on_actionAcerca_del_Auto_triggered();
-
     void on_deshacer_clicked();
 
     void on_rehacer_clicked();
 
-    void on_guardar_clicked();
+    void on_listaBolitas_clicked();
+
+    //ventanasEmergentes
+    void on_actionComandos_triggered();
+
+    void on_actionAcerca_del_Auto_triggered();
 
 private:
     Ui::MainWindow *ui;
 
     QString direccionArchivo = "";
     QColor colorSeleccionado;
+    bool listaBolita = false;
 };
 #endif // MAINWINDOW_H

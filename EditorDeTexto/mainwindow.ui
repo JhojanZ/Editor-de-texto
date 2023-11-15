@@ -186,7 +186,8 @@ color: rgb(0, 0, 0);</string>
      <string/>
     </property>
     <property name="icon">
-     <iconset theme="format-justify-left"/>
+     <iconset theme="format-justify-left">
+      <normaloff>.</normaloff>.</iconset>
     </property>
    </widget>
    <widget class="QSpinBox" name="tamanoLetra">
@@ -353,6 +354,19 @@ color: rgb(0, 0, 0);</string>
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QCheckBox" name="listaBolitas">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>82</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LISTA</string>
+    </property>
+   </widget>
    <zorder>line</zorder>
    <zorder>editorDeTexto</zorder>
    <zorder>negrilla</zorder>
@@ -373,6 +387,7 @@ color: rgb(0, 0, 0);</string>
    <zorder>deshacer</zorder>
    <zorder>rehacer</zorder>
    <zorder>guardar</zorder>
+   <zorder>listaBolitas</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
