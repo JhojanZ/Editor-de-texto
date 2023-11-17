@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>VentanaPrincipal</class>
+ <widget class="QMainWindow" name="VentanaPrincipal">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -22,7 +22,7 @@ color: rgb(0, 0, 0);</string>
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>140</y>
+      <y>150</y>
       <width>591</width>
       <height>451</height>
      </rect>
@@ -41,7 +41,7 @@ color: rgb(0, 0, 0);</string>
 color: rgb(0, 0, 0);</string>
     </property>
    </widget>
-   <widget class="Line" name="line">
+   <widget class="Line" name="linea">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -58,6 +58,9 @@ color: rgb(0, 0, 0);</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="listaBolitas">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -70,25 +73,33 @@ color: rgb(0, 0, 0);</string>
      <string>LISTA</string>
     </property>
    </widget>
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="organizardorDeFunciones">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>10</y>
       <width>771</width>
       <height>121</height>
      </rect>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(192, 191, 188);
 </string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="archivos">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Archivos</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="principal">
+     <attribute name="title">
+      <string>Prinipal</string>
      </attribute>
      <widget class="QPushButton" name="alineadoJustificado">
       <property name="geometry">
@@ -359,6 +370,9 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
      <widget class="QPushButton" name="guardar">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -367,11 +381,20 @@ color: rgb(0, 0, 0);</string>
         <height>51</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Guarda tus archivos&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="styleSheet">
-       <string notr="true">color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+       <string notr="true">color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+color: rgb(61, 56, 70);</string>
       </property>
       <property name="text">
-       <string/>
+       <string>Guardar</string>
       </property>
       <property name="icon">
        <iconset theme="document-save">
@@ -388,11 +411,16 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Tab 2</string>
-     </attribute>
-    </widget>
+   </widget>
+   <widget class="QMdiArea" name="mdiArea">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>190</y>
+      <width>200</width>
+      <height>160</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

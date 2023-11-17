@@ -4,7 +4,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::VentanaPrincipal)
 {
     ui->setupUi(this);
 }
@@ -158,6 +158,8 @@ void MainWindow::on_rehacer_clicked()
 {
     ui->editorDeTexto->redo();
 }
+
+
 
 
 

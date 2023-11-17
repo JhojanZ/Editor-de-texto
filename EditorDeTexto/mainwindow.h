@@ -23,7 +23,7 @@
 
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class VentanaPrincipal; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -105,7 +105,7 @@ private slots:
     void on_actionAcerca_del_Auto_triggered();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::VentanaPrincipal *ui;
 
     QString direccionArchivo = "";
     QColor colorSeleccionado;
