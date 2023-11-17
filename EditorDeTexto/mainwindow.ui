@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>771</width>
-    <height>600</height>
+    <height>659</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,10 +21,10 @@ color: rgb(0, 0, 0);</string>
    <widget class="QTextEdit" name="editorDeTexto">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>80</y>
+      <x>90</x>
+      <y>140</y>
       <width>591</width>
-      <height>411</height>
+      <height>451</height>
      </rect>
     </property>
     <property name="maximumSize">
@@ -39,229 +39,6 @@ color: rgb(0, 0, 0);</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="negrilla">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="format-text-bold">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="subrayar">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="format-text-underline">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="cursiva">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="format-text-italic">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="color">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="applications-graphics">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="tamano">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>10</y>
-      <width>121</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tamaño</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="alineadoJustificado">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="format-justify-fill">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="alineadoDerecha">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="format-justify-right">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="alineadoCentrado">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="format-justify-center">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="alineadoIzquierda">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="format-justify-left">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="tamanoLetra">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>40</y>
-      <width>42</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>1</number>
-    </property>
-    <property name="value">
-     <number>12</number>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="tachado">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="format-text-strikethrough">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="aumentarTamano">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>40</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="icon">
-     <iconset theme="go-up">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="disminuirTamano">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>40</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="go-down">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QFontComboBox" name="fuentes">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>40</y>
-      <width>261</width>
-      <height>25</height>
-     </rect>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -280,85 +57,11 @@ color: rgb(0, 0, 0);</string>
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="imprimirPDF">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>10</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="printer">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="deshacer">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>40</y>
-      <width>51</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="icon">
-     <iconset theme="edit-undo">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="rehacer">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>40</y>
-      <width>51</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="icon">
-     <iconset theme="edit-redo">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="guardar">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>80</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset theme="document-save">
-      <normaloff>.</normaloff>.</iconset>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="default">
-     <bool>true</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QCheckBox" name="listaBolitas">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
+      <x>0</x>
+      <y>160</y>
       <width>82</width>
       <height>23</height>
      </rect>
@@ -367,27 +70,330 @@ color: rgb(0, 0, 0);</string>
      <string>LISTA</string>
     </property>
    </widget>
-   <zorder>line</zorder>
-   <zorder>editorDeTexto</zorder>
-   <zorder>negrilla</zorder>
-   <zorder>subrayar</zorder>
-   <zorder>cursiva</zorder>
-   <zorder>color</zorder>
-   <zorder>tamano</zorder>
-   <zorder>alineadoJustificado</zorder>
-   <zorder>alineadoDerecha</zorder>
-   <zorder>alineadoCentrado</zorder>
-   <zorder>alineadoIzquierda</zorder>
-   <zorder>tamanoLetra</zorder>
-   <zorder>tachado</zorder>
-   <zorder>aumentarTamano</zorder>
-   <zorder>disminuirTamano</zorder>
-   <zorder>fuentes</zorder>
-   <zorder>imprimirPDF</zorder>
-   <zorder>deshacer</zorder>
-   <zorder>rehacer</zorder>
-   <zorder>guardar</zorder>
-   <zorder>listaBolitas</zorder>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>771</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(192, 191, 188);
+</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+     <widget class="QPushButton" name="alineadoJustificado">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="format-justify-fill">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="negrilla">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="format-text-bold">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="disminuirTamano">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>40</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="go-down">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="rehacer">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>40</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="icon">
+       <iconset theme="edit-redo">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="alineadoCentrado">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="format-justify-center">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cursiva">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="format-text-italic">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QFontComboBox" name="fuentes">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>40</y>
+        <width>261</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="tachado">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="format-text-strikethrough">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="subrayar">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="format-text-underline">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="alineadoIzquierda">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="format-justify-left">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="tamanoLetra">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>40</y>
+        <width>42</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="value">
+       <number>12</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="aumentarTamano">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>40</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="icon">
+       <iconset theme="go-up">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="alineadoDerecha">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="format-justify-right">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="imprimirPDF">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="printer">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deshacer">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>40</y>
+        <width>51</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="icon">
+       <iconset theme="edit-undo">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="color">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>10</y>
+        <width>31</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="applications-graphics">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="tamano">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>121</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tamaño</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="guardar">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>80</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="document-save">
+        <normaloff>.</normaloff>.</iconset>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
