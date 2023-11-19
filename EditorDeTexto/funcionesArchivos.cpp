@@ -1,20 +1,7 @@
-//Jhojan Felipe Sánchez Zapata
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::VentanaPrincipal)
-{
-    ui->setupUi(this);
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
-// ----------------------------------------Funciones con Archivos  //falta aplicar comandos
+//falta aplicar comandos
 void MainWindow::on_actionNuevo_triggered()//DONE
 {
     MainWindow *nuevaVentana = new MainWindow();
@@ -158,11 +145,3 @@ void MainWindow::on_rehacer_clicked()
 {
     ui->editorDeTexto->redo();
 }
-
-
-
-
-
-
-
-

@@ -104,11 +104,14 @@ private slots:
 
     void on_actionAcerca_del_Auto_triggered();
 
+    void on_tamanoLetra_valueChanged(int arg1);
+
 private:
     Ui::VentanaPrincipal *ui;
 
     QString direccionArchivo = "";
     QColor colorSeleccionado;
     bool listaBolita = false;
+    int tamanoLetra = 12;
 };
 #endif // MAINWINDOW_H

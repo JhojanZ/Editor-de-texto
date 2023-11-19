@@ -412,16 +412,6 @@ color: rgb(61, 56, 70);</string>
      </widget>
     </widget>
    </widget>
-   <widget class="QMdiArea" name="mdiArea">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>190</y>
-      <width>200</width>
-      <height>160</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

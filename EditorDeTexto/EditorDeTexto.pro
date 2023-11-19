@@ -12,6 +12,7 @@ SOURCES += \
     editarTexto.cpp \
     funcionesArchivos.cpp \
     main.cpp \
+    mainwindow.cpp \
     ventanasEmergentes.cpp
 
 HEADERS += \

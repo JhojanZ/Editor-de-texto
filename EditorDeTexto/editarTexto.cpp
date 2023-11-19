@@ -169,6 +169,24 @@ void MainWindow::on_tamano_clicked()
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
 }
+
+
+void MainWindow::on_tamanoLetra_valueChanged(int arg1)
+{
+    tamanoLetra = arg1;
+    qDebug() << tamanoLetra;
+    QTextCursor cursor = ui->editorDeTexto->textCursor();
+    QTextCharFormat formato = cursor.charFormat();
+    int inicio = (ui->editorDeTexto->textCursor().selectionStart()) + (ui->editorDeTexto->textCursor().selectedText().length());
+    if (cursor.hasSelection()) {
+        formato.setFontPointSize(tamanoLetra);
+        cursor.mergeCharFormat(formato);
+    }
+    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
+    cursor.clearSelection();
+    ui->editorDeTexto->setTextCursor(cursor);
+    ui->editorDeTexto->setFocus();
+}
 void MainWindow::on_aumentarTamano_clicked()
 {
     QTextCursor cursor = ui->editorDeTexto->textCursor();
