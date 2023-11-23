@@ -17,6 +17,7 @@
 #include <QFontDatabase>
 #include <QColorDialog>
 #include <QKeyEvent>
+#include <QImage>
 
 #include <QTextEdit>
 #include <QVBoxLayout>
@@ -41,6 +42,8 @@ public:
     void infoVentana(QString mensaje);
 
     void guardarPDF(QString direccionArchivo);
+
+    //void contextMenuEvent(QContextMenuEvent *event) override;
 
 private:
     QPushButton *tipoTriggerButton;
@@ -105,6 +108,12 @@ private slots:
     void on_actionAcerca_del_Auto_triggered();
 
     void on_tamanoLetra_valueChanged(int arg1);
+
+    void on_agregarImagenes_clicked();
+
+    void on_agregarTabla_clicked();
+
+    void on_cambiarTamanoImagen_clicked();
 
 private:
     Ui::VentanaPrincipal *ui;

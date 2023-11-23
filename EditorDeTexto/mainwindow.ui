@@ -57,22 +57,6 @@ color: rgb(0, 0, 0);</string>
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QCheckBox" name="listaBolitas">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>160</y>
-      <width>82</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>LISTA</string>
-    </property>
-   </widget>
    <widget class="QTabWidget" name="organizardorDeFunciones">
     <property name="geometry">
      <rect>
@@ -411,6 +395,79 @@ color: rgb(61, 56, 70);</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="beta">
+     <attribute name="title">
+      <string>Beta</string>
+     </attribute>
+     <widget class="QPushButton" name="agregarImagenes">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Imgenes</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="agregarTabla">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>40</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tablas</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="listaBolitas">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>40</y>
+        <width>82</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>VIñetas</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>10</y>
+        <width>441</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lugar de experimentos, se eliminara al momento de lanzar el proyecto final</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="cambiarTamanoImagen">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>180</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
