@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-//falta aplicar comandos
 void MainWindow::on_actionNuevo_triggered()//DONE
 {
     MainWindow *nuevaVentana = new MainWindow();
@@ -39,8 +38,8 @@ void MainWindow::on_actionGuardar_triggered() //DONE
         guardarArchivo(direccionArchivo);
     }
 }
-void MainWindow::guardarArchivo(QString nombreArchivo){
-    QFile archivo(nombreArchivo);
+void MainWindow::guardarArchivo(QString direccionArchivo){
+    QFile archivo(direccionArchivo);
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QTextStream insertar(&archivo);
         insertar<<ui->editorDeTexto->toHtml();

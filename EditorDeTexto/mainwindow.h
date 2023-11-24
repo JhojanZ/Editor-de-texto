@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 
+#include <QApplication>
 #include <QString>
 #include <QDebug>
 #include <QDialog>
@@ -119,7 +120,6 @@ private:
     Ui::VentanaPrincipal *ui;
 
     QString direccionArchivo = "";
-    QColor colorSeleccionado;
     bool listaBolita = false;
     int tamanoLetra = 12;
 };

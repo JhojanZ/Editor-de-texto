@@ -11,7 +11,6 @@ CONFIG += c++17
 SOURCES += \
     editarTexto.cpp \
     funcionesArchivos.cpp \
-    main.cpp \
     mainwindow.cpp \
     ventanasEmergentes.cpp
 
