@@ -5,7 +5,6 @@ Este proyecto universitario es un editor de texto simple desarrollado con el fra
 
 El editor de texto desarrollado con Qt ofrece las siguientes funcionalidades principales:
 
-<<<<<<< HEAD
 - **Creación y Edición de Archivos:** Se puede crear nuevos archivos de texto con formato `.txt` y `rtf`, y editar archivos existentes de manera fácil y eficiente.
 - **Manipulación del Texto:** El editor permite realizar operaciones básicas de edición, como cortar, copiar, pegar, deshacer y rehacer, para facilitar la manipulación del contenido.
 - **Formato del Texto:** Tambien incluye opciones de formato del texto como ajustando el tamaño, color y estilo de fuente, así como alineando el texto las necesidades.
@@ -99,10 +98,4 @@ Este proyecto está bajo la Licencia Pública General de GNU (GNU GPL) v3.0. Pue
 - **Correo Electrónico:** [j.sanchez10@utp.edu.co](mailto:j.sanchez10@utp.edu.co)
 - **Perfil en GitHub:** [TuUsuarioGitHub](https://github.com/TuUsuarioGitHub)
 
-
-- **![Logo de la Universidad Tecnologica de Pereira](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Logo_U.T.P.png/320px-Logo_U.T.P.png)**
-=======
-¯\\\_(ツ)\_ /¯
-
-(edit, actualizar esto)
->>>>>>> 5ff061f56d04dfbc6bc33a2abd83aa6dd93850a4
+**![Logo de la Universidad Tecnologica de Pereira](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Logo_U.T.P.png/320px-Logo_U.T.P.png)**
