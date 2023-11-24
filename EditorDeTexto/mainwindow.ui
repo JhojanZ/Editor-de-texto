@@ -74,7 +74,7 @@ color: rgb(0, 0, 0);</string>
 </string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="archivos">
      <attribute name="title">
@@ -454,20 +454,20 @@ color: rgb(61, 56, 70);</string>
        <string>Lugar de experimentos, se eliminara al momento de lanzar el proyecto final</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="cambiarTamanoImagen">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>60</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tamano imagen</string>
+      </property>
+     </widget>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="cambiarTamanoImagen">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>180</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

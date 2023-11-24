@@ -23,6 +23,7 @@ MainWindow::~MainWindow()
 }
 
 
+//Funciones Experimentales
 
 void MainWindow::on_agregarImagenes_clicked()
 {
@@ -93,16 +94,6 @@ void MainWindow::on_cambiarTamanoImagen_clicked()
         cursor.insertImage(imagen, nombreImagen);
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
