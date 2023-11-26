@@ -73,7 +73,9 @@ private slots:
     void on_guardar_clicked();
 
     //editarTexto
-    void aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor cursor);
+    void aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor &cursor);
+
+    void aplicarFormatoAlNuevoTexto();
 
     void on_subrayar_clicked();
 
@@ -94,6 +96,8 @@ private slots:
     void on_alineadoJustificado_clicked();
 
     void on_tachado_clicked();
+
+    void tamanoDeLetra(int nuevoTamano);
 
     void on_aumentarTamano_clicked();
 

@@ -127,7 +127,7 @@ void MainWindow::on_guardar_clicked()
 {
     //unificar señales para solo usar una funcion
     if(direccionArchivo.isEmpty()){
-        direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto (*.txt);;Archivos de texto enriquecido(*.rtf);;Todos los archivos (*.*)");
+        direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto enriquecido(*.rtf);;Archivos de texto (*.txt);;Archivo Html (.html);;Todos los archivos (*.*)");
         if(!direccionArchivo.isEmpty()){
             guardarArchivo(direccionArchivo);
         }
