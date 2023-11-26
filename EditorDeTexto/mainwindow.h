@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QPushButton>
 
+#include <functional>
+
 #include <QApplication>
 #include <QString>
 #include <QDebug>
@@ -71,10 +73,7 @@ private slots:
     void on_guardar_clicked();
 
     //editarTexto
-    void seleccionarTexto(int &inicio, int &longitud);
-
-
-    void aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor cursor, int inicio, int longitud);
+    void aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor cursor);
 
     void on_subrayar_clicked();
 

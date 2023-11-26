@@ -3,12 +3,11 @@
 
 #include <functional>
 
-void MainWindow::seleccionarTexto(int &inicio, int &longitud) {
-    inicio = ui->editorDeTexto->textCursor().selectionStart();
-    longitud = ui->editorDeTexto->textCursor().selectedText().length();
-}
 
-void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor cursor, int inicio, int longitud) {
+
+void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor cursor) {
+    int inicio = ui->editorDeTexto->textCursor().selectionStart();
+    int longitud = ui->editorDeTexto->textCursor().selectedText().length();
     if (longitud> 0) {
         cursor.setPosition(inicio);
         cursor.setPosition(inicio + longitud, QTextCursor::KeepAnchor);
@@ -26,93 +25,45 @@ void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharF
 
 void MainWindow::on_negrilla_clicked() //DONE
 {
-    int inicio, longitud;
-    seleccionarTexto(inicio, longitud);
     QTextCursor cursor = ui->editorDeTexto->textCursor();
     QTextCharFormat formato = cursor.charFormat();
     auto negrilla = [&formato]() {
         formato.setFontWeight(formato.fontWeight() == QFont::Bold ? QFont::Normal : QFont::Bold);
     };
-    aplicarFormatoAlTexto(negrilla, formato, cursor, inicio, longitud);
+    aplicarFormatoAlTexto(negrilla, formato, cursor);
 }
 
 
 
 void MainWindow::on_subrayar_clicked() //DONE
 {
-    int inicio, longitud;
-    seleccionarTexto(inicio, longitud);
     QTextCursor cursor = ui->editorDeTexto->textCursor();
     QTextCharFormat formato = cursor.charFormat();
-
-    //aplicarFormatoAlTexto(formato, cursor, inicio, longitud);
-
-    ///
-    if(longitud > 0){
-        cursor.setPosition(inicio);
-        cursor.setPosition(inicio + longitud, QTextCursor::KeepAnchor);
-    }else{
-        cursor.select(QTextCursor::WordUnderCursor);
-    }
-    formato.setFontUnderline(!formato.fontUnderline());
-
-
-    inicio += longitud;
-    cursor.mergeCharFormat(formato);
-    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
-    cursor.clearSelection();
-    ui->editorDeTexto->setTextCursor(cursor);
-    ui->editorDeTexto->setFocus();
+    auto subrayado = [&formato]() {
+        formato.setFontUnderline(!formato.fontUnderline());
+    };
+    aplicarFormatoAlTexto(subrayado, formato, cursor);
 }
 
 void MainWindow::on_cursiva_clicked() //DONE
 {
-    int inicio = ui->editorDeTexto->textCursor().selectionStart();
-    int longitud = ui->editorDeTexto->textCursor().selectedText().length();
     QTextCursor cursor = ui->editorDeTexto->textCursor();
-    if(longitud > 0){
-        cursor.setPosition(inicio);
-        cursor.setPosition(inicio + longitud, QTextCursor::KeepAnchor);
-    }else{
-        cursor.select(QTextCursor::WordUnderCursor);
-    }
     QTextCharFormat formato = cursor.charFormat();
-    if (formato.font().italic()) {
-        formato.setFontItalic(false);
-    } else {
-        formato.setFontItalic(true);
-    }
-    inicio += longitud;
-    cursor.mergeCharFormat(formato);
-    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
-    cursor.clearSelection();
-    ui->editorDeTexto->setTextCursor(cursor);
-    ui->editorDeTexto->setFocus();
+    auto cursiva = [&formato]() {
+        formato.setFontItalic(!formato.font().italic());
+    };
+    aplicarFormatoAlTexto(cursiva, formato, cursor);
 }
 
 void MainWindow::on_tachado_clicked() //DONE
 {
-    int inicio = ui->editorDeTexto->textCursor().selectionStart();
-    int longitud = ui->editorDeTexto->textCursor().selectedText().length();
+
     QTextCursor cursor = ui->editorDeTexto->textCursor();
-    if(longitud > 0){
-        cursor.setPosition(inicio);
-        cursor.setPosition(inicio + longitud, QTextCursor::KeepAnchor);
-    }else{
-        cursor.select(QTextCursor::WordUnderCursor);
-    }
     QTextCharFormat formato = cursor.charFormat();
-    if (formato.fontStrikeOut()) {
-        formato.setFontStrikeOut(false);
-    } else {
-        formato.setFontStrikeOut(true);
-    }
-    inicio += longitud;
-    cursor.mergeCharFormat(formato);
-    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
-    cursor.clearSelection();
-    ui->editorDeTexto->setTextCursor(cursor);
-    ui->editorDeTexto->setFocus();
+    auto tachado = [&formato]() {
+        formato.setFontStrikeOut(!formato.fontStrikeOut());
+    };
+    aplicarFormatoAlTexto(tachado, formato, cursor);
 }
 
 void MainWindow::on_listaBolitas_clicked()
