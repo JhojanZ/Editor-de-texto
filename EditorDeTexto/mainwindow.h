@@ -19,6 +19,8 @@
 #include <QColorDialog>
 #include <QKeyEvent>
 #include <QImage>
+#include <QStandardItemModel>
+
 
 #include <QTextEdit>
 #include <QVBoxLayout>
@@ -110,11 +112,7 @@ private slots:
 
     void on_tamanoLetra_valueChanged(int arg1);
 
-    void on_agregarImagenes_clicked();
-
-    void on_agregarTabla_clicked();
-
-    void on_cambiarTamanoImagen_clicked();
+    void on_tamanoDeLetra_currentIndexChanged(int index);
 
 private:
     Ui::VentanaPrincipal *ui;
