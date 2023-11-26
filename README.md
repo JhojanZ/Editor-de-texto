@@ -21,9 +21,7 @@ Para compilar el proyecto, sigue estos pasos:
 
 1. Clona el repositorio.
 2. Abre el proyecto en el entorno de desarrollo Qt Creator.
-3. Compila el código utilizando el compilador compatible con tu plataforma.
-
-Estas son solo indicaciones generales; asegúrate de incluir detalles
+3. Compila el código con ayuda del enterno Qt.
 
 ## Explicación de funciones
 El código fuente se organiza en varios archivos dentro de la misma clase `mainwindow.h` para mejorar la legibilidad y mantener una estructura modular, esta tambien contiene todas las librerias necesarias para que funcione el codigo. A continuación, se detallan las principales funciones y su distribución:
