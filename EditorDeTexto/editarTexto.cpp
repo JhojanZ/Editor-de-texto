@@ -1,52 +1,62 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-// ----------------------------------------Funciones de Diseño de Texto //Falta corregir el cursor
+#include <functional>
 
-void MainWindow::on_negrilla_clicked() //DONE
-{
-    int inicio = ui->editorDeTexto->textCursor().selectionStart();
-    int longitud = ui->editorDeTexto->textCursor().selectedText().length();
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    if(longitud > 0){
+void MainWindow::seleccionarTexto(int &inicio, int &longitud) {
+    inicio = ui->editorDeTexto->textCursor().selectionStart();
+    longitud = ui->editorDeTexto->textCursor().selectedText().length();
+}
+
+void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor cursor, int inicio, int longitud) {
+    if (longitud> 0) {
         cursor.setPosition(inicio);
         cursor.setPosition(inicio + longitud, QTextCursor::KeepAnchor);
-    }else{
+    } else {
         cursor.select(QTextCursor::WordUnderCursor);
     }
-    QTextCharFormat formato = cursor.charFormat();
-    if (formato.fontWeight() == QFont::Bold) {
-        formato.setFontWeight(formato.fontWeight() == QFont::Bold ? QFont::Normal : QFont::Bold); // Cambia negrilla
-        cursor.mergeCharFormat(formato);
-    } else {
-        formato.setFontWeight(formato.fontWeight() == QFont::Bold ? QFont::Normal : QFont::Bold); // Cambia negrilla
-        cursor.setBlockCharFormat(formato);
-    }
-    inicio += longitud;
+    funcion();
     cursor.mergeCharFormat(formato);
-    cursor.setPosition(inicio);
+    cursor.setPosition(inicio + longitud, QTextCursor::MoveAnchor);
     cursor.clearSelection();
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
 }
 
+
+void MainWindow::on_negrilla_clicked() //DONE
+{
+    int inicio, longitud;
+    seleccionarTexto(inicio, longitud);
+    QTextCursor cursor = ui->editorDeTexto->textCursor();
+    QTextCharFormat formato = cursor.charFormat();
+    auto negrilla = [&formato]() {
+        formato.setFontWeight(formato.fontWeight() == QFont::Bold ? QFont::Normal : QFont::Bold);
+    };
+    aplicarFormatoAlTexto(negrilla, formato, cursor, inicio, longitud);
+}
+
+
+
 void MainWindow::on_subrayar_clicked() //DONE
 {
-    int inicio = ui->editorDeTexto->textCursor().selectionStart();
-    int longitud = ui->editorDeTexto->textCursor().selectedText().length();
+    int inicio, longitud;
+    seleccionarTexto(inicio, longitud);
     QTextCursor cursor = ui->editorDeTexto->textCursor();
+    QTextCharFormat formato = cursor.charFormat();
+
+    //aplicarFormatoAlTexto(formato, cursor, inicio, longitud);
+
+    ///
     if(longitud > 0){
         cursor.setPosition(inicio);
         cursor.setPosition(inicio + longitud, QTextCursor::KeepAnchor);
     }else{
         cursor.select(QTextCursor::WordUnderCursor);
     }
-    QTextCharFormat formato = cursor.charFormat();
-    if (formato.fontUnderline()) {
-        formato.setFontUnderline(false);
-    } else {
-        formato.setFontUnderline(true);
-    }
+    formato.setFontUnderline(!formato.fontUnderline());
+
+
     inicio += longitud;
     cursor.mergeCharFormat(formato);
     cursor.setPosition(inicio, QTextCursor::MoveAnchor);

@@ -71,6 +71,11 @@ private slots:
     void on_guardar_clicked();
 
     //editarTexto
+    void seleccionarTexto(int &inicio, int &longitud);
+
+
+    void aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor cursor, int inicio, int longitud);
+
     void on_subrayar_clicked();
 
     void on_negrilla_clicked();
