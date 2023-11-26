@@ -21,9 +21,7 @@ Para compilar el proyecto, sigue estos pasos:
 
 1. Clona el repositorio.
 2. Abre el proyecto en el entorno de desarrollo Qt Creator.
-3. Compila el código utilizando el compilador compatible con tu plataforma.
-
-Estas son solo indicaciones generales; asegúrate de incluir detalles
+3. Compila el código con ayuda del enterno Qt.
 
 ## Explicación de funciones
 El código fuente se organiza en varios archivos dentro de la misma clase `mainwindow.h` para mejorar la legibilidad y mantener una estructura modular, esta tambien contiene todas las librerias necesarias para que funcione el codigo. A continuación, se detallan las principales funciones y su distribución:
@@ -88,7 +86,7 @@ void MainWindow::infoVentana(QString mensaje){
 }
 ```
 ## Licencia
-Este proyecto está bajo la Licencia Pública General de GNU (GNU GPL) v3.0. Puedes obtener una copia de la licencia en el archivo [LICENSE](archivo_licencia) o visitando el sitio web [Licencia Pública General de GNU](https://www.gnu.org/licenses/gpl-3.0.html).
+Este proyecto está bajo la Licencia Pública General de GNU (GNU GPL) v3.0. Puedes obtener una copia de la licencia en el archivo [LICENSE](archivo_licencia) o visitando el sitio web [Licencia Pública General de GNU](https://github.com/JhojanZ/Editor-de-texto/blob/master/LICENSE.txt).
 ## Contacto
 - **Nombre:** Jhojan Felipe Sanchez Zapata
 - **Institución:** Universidad Tecnologica de Pereira
@@ -96,6 +94,6 @@ Este proyecto está bajo la Licencia Pública General de GNU (GNU GPL) v3.0. Pue
 - **Facultad:** Facultad de Ingenierías
 - **Curso:** Programación II
 - **Correo Electrónico:** [j.sanchez10@utp.edu.co](mailto:j.sanchez10@utp.edu.co)
-- **Perfil en GitHub:** [TuUsuarioGitHub](https://github.com/TuUsuarioGitHub)
+- **Perfil en GitHub:** [JhojanZ](https://github.com/JhojanZ)
 
 **![Logo de la Universidad Tecnologica de Pereira](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Logo_U.T.P.png/320px-Logo_U.T.P.png)**
