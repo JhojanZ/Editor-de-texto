@@ -1,23 +1,23 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <functional>
-
-
 
 void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor cursor) {
     int inicio = ui->editorDeTexto->textCursor().selectionStart();
     int longitud = ui->editorDeTexto->textCursor().selectedText().length();
-    if (longitud> 0) {
+
+    if (longitud > 0) {
         cursor.setPosition(inicio);
         cursor.setPosition(inicio + longitud, QTextCursor::KeepAnchor);
     } else {
         cursor.select(QTextCursor::WordUnderCursor);
     }
     funcion();
+
     cursor.mergeCharFormat(formato);
-    cursor.setPosition(inicio + longitud, QTextCursor::MoveAnchor);
     cursor.clearSelection();
+    //cursor.setPosition(inicio + longitud, QTextCursor::MoveAnchor);
+
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
 }
@@ -68,18 +68,12 @@ void MainWindow::on_tachado_clicked() //DONE
 
 void MainWindow::on_listaBolitas_clicked()
 {
-
-    if(listaBolita == false){
-        listaBolita = true;
-        //int inicio = ui->editorDeTexto->textCursor().selectionStart();
+    if (listaBolita) {
         QTextCursor cursor = ui->editorDeTexto->textCursor();
-        //QTextCharFormat formato = cursor.charFormat();
-        ui->editorDeTexto->insertPlainText("• ");
-        //cursor.setPosition(inicio, QTextCursor::MoveAnchor);
+        cursor.insertText("• ");
         ui->editorDeTexto->setTextCursor(cursor);
-    }else{
-        listaBolita = false;
     }
+    listaBolita = !listaBolita;
     qDebug() << listaBolita;
 }
 
