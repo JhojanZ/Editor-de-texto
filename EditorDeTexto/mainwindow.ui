@@ -74,12 +74,116 @@ color: rgb(0, 0, 0);</string>
 </string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="archivos">
      <attribute name="title">
       <string>Archivos</string>
      </attribute>
+     <widget class="QPushButton" name="imprimirArchivo">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>20</y>
+        <width>80</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Imprimir</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="guardarArchivo">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>20</y>
+        <width>80</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="salirPrograma">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>20</y>
+        <width>81</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Salir</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="info">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>50</y>
+        <width>91</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Acerca De</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="guardarHTML">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>20</y>
+        <width>91</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar Html</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="nuevoArchivo">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>81</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nuevo</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="abrirArchivo">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>80</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Abrir</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="eliminarArchivo">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>20</y>
+        <width>80</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Eliminar</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="principal">
      <attribute name="title">
@@ -122,7 +226,7 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="disminuirTamano">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>380</x>
         <y>40</y>
         <width>31</width>
         <height>25</height>
@@ -245,27 +349,11 @@ color: rgb(0, 0, 0);</string>
         <normaloff>.</normaloff>.</iconset>
       </property>
      </widget>
-     <widget class="QSpinBox" name="tamanoLetra">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>40</y>
-        <width>42</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="value">
-       <number>12</number>
-      </property>
-     </widget>
      <widget class="QPushButton" name="aumentarTamano">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>40</y>
+        <x>380</x>
+        <y>10</y>
         <width>31</width>
         <height>25</height>
        </rect>
@@ -343,14 +431,14 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="tamano">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>270</x>
         <y>10</y>
-        <width>41</width>
+        <width>101</width>
         <height>25</height>
        </rect>
       </property>
       <property name="text">
-       <string>Tamaño</string>
+       <string>Aplicar Tamaño</string>
       </property>
      </widget>
      <widget class="QPushButton" name="guardar">
@@ -394,16 +482,50 @@ color: rgb(61, 56, 70);</string>
        <bool>false</bool>
       </property>
      </widget>
+     <widget class="QSpinBox" name="tamanoLetra">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>40</y>
+        <width>42</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="value">
+       <number>12</number>
+      </property>
+     </widget>
      <widget class="QComboBox" name="tamanoDeLetra">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>10</y>
-        <width>81</width>
-        <height>25</height>
+        <x>320</x>
+        <y>40</y>
+        <width>51</width>
+        <height>31</height>
        </rect>
       </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
       <property name="editable">
+       <bool>true</bool>
+      </property>
+      <property name="currentText">
+       <string>20</string>
+      </property>
+      <property name="currentIndex">
+       <number>12</number>
+      </property>
+      <property name="maxCount">
+       <number>99</number>
+      </property>
+      <property name="duplicatesEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="frame">
        <bool>true</bool>
       </property>
       <item>
@@ -655,6 +777,19 @@ color: rgb(61, 56, 70);</string>
       </property>
      </widget>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="vinetas">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>170</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Viñeta</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

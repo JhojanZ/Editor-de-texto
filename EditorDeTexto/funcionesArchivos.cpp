@@ -1,13 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void MainWindow::on_actionNuevo_triggered()//DONE
+
+void MainWindow::on_nuevoArchivo_clicked()
 {
     MainWindow *nuevaVentana = new MainWindow();
     nuevaVentana->show();
 }
+void MainWindow::on_actionNuevo_triggered()//DONE
+{
+    on_abrirArchivo_clicked();
+}
 
-void MainWindow::on_actionAbrir_triggered() //DONE
+void MainWindow::on_abrirArchivo_clicked()
 {
     direccionArchivo = QFileDialog::getOpenFileName(this, "Abrir Archivo", QDir::homePath());
     if (!direccionArchivo.isEmpty()) {
@@ -26,17 +31,29 @@ void MainWindow::on_actionAbrir_triggered() //DONE
         }
     }
 }
+void MainWindow::on_actionAbrir_triggered() //DONE
+{
+    on_abrirArchivo_clicked();
+}
 
-void MainWindow::on_actionGuardar_triggered() //DONE
+void MainWindow::on_guardarArchivo_clicked()
 {
     if(direccionArchivo.isEmpty()){
-        direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto (*.txt);;Archivos de texto enriquecido(*.rtf);;Todos los archivos (*.*)");
+        direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto enriquecido(*.rtf);;Archivos de texto (*.txt);;Archivo Html (.html);;Todos los archivos (*.*)");
         if(!direccionArchivo.isEmpty()){
             guardarArchivo(direccionArchivo);
         }
     }else{
         guardarArchivo(direccionArchivo);
     }
+}
+void MainWindow::on_actionGuardar_triggered() //DONE
+{
+    on_guardarArchivo_clicked();
+}
+void MainWindow::on_guardar_clicked()
+{
+    on_guardarArchivo_clicked();
 }
 void MainWindow::guardarArchivo(QString direccionArchivo){
     QFile archivo(direccionArchivo);
@@ -49,10 +66,6 @@ void MainWindow::guardarArchivo(QString direccionArchivo){
     }
 }
 
-void MainWindow::on_actionExportar_triggered() //DONE
-{
-    guardarPDF(QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)"));
-}
 void MainWindow::guardarPDF(QString direccionArchivo)
 {
     if (!direccionArchivo.isEmpty()) {
@@ -74,20 +87,41 @@ void MainWindow::guardarPDF(QString direccionArchivo)
         pintar.end();*/
     }
 }
+void MainWindow::on_actionExportar_triggered() //DONE
+{
+    guardarPDF(QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)"));
+}
+
+void MainWindow::on_imprimirArchivo_clicked()
+{
+    guardarPDF(QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)"));
+}
+void MainWindow::on_imprimirPDF_clicked()
+{
+    on_imprimirArchivo_clicked();
+}
+void MainWindow::on_guardarHTML_clicked()
+{
+    guardarArchivo(QFileDialog::getSaveFileName(this, "Exportar a Archivo Web", QDir::homePath(), "Archivos HTML (*.html)"));
+}
 
 void MainWindow::on_actionEliminar_triggered() //DONE
+{
+    on_eliminarArchivo_clicked();
+}
+void MainWindow::on_eliminarArchivo_clicked()
 {
     QFile archivo(direccionArchivo);
     archivo.remove();
     ui->editorDeTexto->setText("");
 }
 
-void MainWindow::on_actionSalir_triggered() //DONE
+void MainWindow::on_salirPrograma_clicked()
 {
     QMessageBox confirmar;
     confirmar.setText("\t¿Seguro de que quieres salir?\n\nTodo progreso sin guardar se perdera.");
 
-    QPushButton *aceptar = confirmar.addButton("Aceptar", QMessageBox::AcceptRole);
+        QPushButton *aceptar = confirmar.addButton("Aceptar", QMessageBox::AcceptRole);
     QPushButton *cancelar = confirmar.addButton("Cancelar", QMessageBox::RejectRole);
     confirmar.exec();
 
@@ -97,44 +131,20 @@ void MainWindow::on_actionSalir_triggered() //DONE
         //No hacer nada
     }
 }
+void MainWindow::on_actionSalir_triggered() //DONE
+{
+    on_salirPrograma_clicked();
+}
 
 //----------------------------------------Funciones con Comandos
 
 void MainWindow::keyPressEvent(QKeyEvent *evento)//DONE
 {
-    //ui->editorDeTexto->setFocus();
-    qDebug() << "Tecla presionada: " << evento->key();
-    if(evento->key() == Qt::Key_Return || evento->key() == Qt::Key_Enter){
-        if(listaBolita == true){
-            int inicio = ui->editorDeTexto->textCursor().selectionStart();
-            QTextCursor cursor = ui->editorDeTexto->textCursor();
-            //QTextCharFormat formato = cursor.charFormat();
-            ui->editorDeTexto->insertPlainText("• ");
-            //cursor.insertText("• ");
-            cursor.setPosition(inicio, QTextCursor::MoveAnchor);
-        }
-        qDebug() <<"yes";
-    }
-    qDebug() <<"yeasdasds";
+
 }
 
-void MainWindow::on_imprimirPDF_clicked() //DONE
-{
-    guardarPDF(QFileDialog::getSaveFileName(this, "Exportar a PDF", QDir::homePath(), "Archivos PDF (*.pdf)"));
-}
 
-void MainWindow::on_guardar_clicked()
-{
-    //unificar señales para solo usar una funcion
-    if(direccionArchivo.isEmpty()){
-        direccionArchivo = QFileDialog::getSaveFileName(this, "Guardar archivo", QDir::homePath(), "Archivos de texto enriquecido(*.rtf);;Archivos de texto (*.txt);;Archivo Html (.html);;Todos los archivos (*.*)");
-        if(!direccionArchivo.isEmpty()){
-            guardarArchivo(direccionArchivo);
-        }
-    }else{
-        guardarArchivo(direccionArchivo);
-    }
-}
+
 
 void MainWindow::on_deshacer_clicked()
 {
@@ -144,3 +154,20 @@ void MainWindow::on_rehacer_clicked()
 {
     ui->editorDeTexto->redo();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

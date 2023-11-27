@@ -66,15 +66,13 @@ void MainWindow::on_tachado_clicked() //DONE
     aplicarFormatoAlTexto(tachado, formato, cursor);
 }
 
-void MainWindow::on_listaBolitas_clicked()
+
+void MainWindow::on_vinetas_clicked()
 {
-    if (listaBolita) {
-        QTextCursor cursor = ui->editorDeTexto->textCursor();
-        cursor.insertText("• ");
-        ui->editorDeTexto->setTextCursor(cursor);
-    }
-    listaBolita = !listaBolita;
-    qDebug() << listaBolita;
+    QTextCursor cursor = ui->editorDeTexto->textCursor();
+    cursor.insertText("• ");
+    ui->editorDeTexto->setTextCursor(cursor);
+
 }
 
 QTextCharFormat formatoTemporal;
@@ -89,7 +87,7 @@ void MainWindow::aplicarFormatoAlNuevoTexto(){
     }
 }
 
-void MainWindow::on_color_clicked()//DONE
+void MainWindow::on_color_clicked()
 {
 
     QColor color = QColorDialog::getColor(Qt::black , this, "Seleccionar color de fuente");
@@ -121,7 +119,7 @@ void MainWindow::on_color_clicked()//DONE
     ui->editorDeTexto->setFocus();
 }
 
-//Tamaños //DONE
+//--------------------    Tamaños
 void MainWindow::on_tamano_clicked()
 {
     QTextCursor cursor = ui->editorDeTexto->textCursor();
@@ -182,7 +180,7 @@ void MainWindow::on_disminuirTamano_clicked()
     tamanoDeLetra(ui->tamanoLetra->value() - 1);
 }
 
-//Alineados //DONE
+//---------------     Aineados
 void MainWindow::on_alineadoIzquierda_clicked()
 {
     alinear(Qt::AlignLeft);

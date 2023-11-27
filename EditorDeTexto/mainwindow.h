@@ -111,8 +111,6 @@ private slots:
 
     void on_rehacer_clicked();
 
-    void on_listaBolitas_clicked();
-
     //ventanasEmergentes
     void on_actionComandos_triggered();
 
@@ -121,6 +119,25 @@ private slots:
     void on_tamanoLetra_valueChanged(int arg1);
 
     void on_tamanoDeLetra_currentIndexChanged(int index);
+
+    //Falta organizar
+    void on_nuevoArchivo_clicked();
+
+    void on_abrirArchivo_clicked();
+
+    void on_imprimirArchivo_clicked();
+
+    void on_guardarArchivo_clicked();
+
+    void on_guardarHTML_clicked();
+
+    void on_info_clicked();
+
+    void on_salirPrograma_clicked();
+
+    void on_eliminarArchivo_clicked();
+
+    void on_vinetas_clicked();
 
 private:
     Ui::VentanaPrincipal *ui;
