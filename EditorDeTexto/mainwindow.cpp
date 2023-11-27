@@ -17,14 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //connect(ui->editorDeTexto, &QTextEdit::textChanged, this, &MainWindow::aplicarFormatoAlNuevoTexto);
-
-    //TO DO:
-    /*
-     * ARREGLAR LOS CAMBIOS DE COLOR NO INTENCIONADOS
-     * ARREGLAR EL COLOR SIN SELECCION
-     * COmpletar el readme
-    */
+    ui->tamanoDeLetra->setEditText("12");
 }
 
 MainWindow::~MainWindow()

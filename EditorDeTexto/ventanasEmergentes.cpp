@@ -12,7 +12,7 @@ void MainWindow::on_actionAcerca_del_Auto_triggered()
 }
 void MainWindow::on_info_clicked()
 {
-    infoVentana("Proyecto creado por:\n\nJhojan Felipe Sánchez Zapata\n\n\nFuentes de las imagenes:\n\nhttps://www.flaticon.es/iconos-gratis/texto\nTexto iconos creados por Lizel Arina - Flaticon\nAlinear al centro iconos creados por Arkinasi - Flaticon");
+    infoVentana("Proyecto creado por:\n\nJhojan Felipe Sánchez Zapata\n\n\nFuentes de las imagenes:\n\nImagenes Del Sistema");
 }
 void MainWindow::infoVentana(QString mensaje){
     QMessageBox confirmar;

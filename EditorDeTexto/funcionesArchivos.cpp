@@ -112,8 +112,13 @@ void MainWindow::on_actionEliminar_triggered() //DONE
 void MainWindow::on_eliminarArchivo_clicked()
 {
     QFile archivo(direccionArchivo);
-    archivo.remove();
-    ui->editorDeTexto->setText("");
+    if(archivo.remove()){
+        ui->editorDeTexto->setText("");
+        //La funcion "infoVentana" se ubica en venatasEmergentex.cpp
+        infoVentana("Archivo eliminado de forma exitosa");
+    }else{
+        infoVentana("No se pudo encontrar el archivo");
+    }
 }
 
 void MainWindow::on_salirPrograma_clicked()
@@ -135,16 +140,6 @@ void MainWindow::on_actionSalir_triggered() //DONE
 {
     on_salirPrograma_clicked();
 }
-
-//----------------------------------------Funciones con Comandos
-
-void MainWindow::keyPressEvent(QKeyEvent *evento)//DONE
-{
-
-}
-
-
-
 
 void MainWindow::on_deshacer_clicked()
 {

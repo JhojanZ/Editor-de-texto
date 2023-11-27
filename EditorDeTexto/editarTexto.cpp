@@ -2,7 +2,8 @@
 #include "ui_mainwindow.h"
 
 
-void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor &cursor) {
+void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato) {
+    QTextCursor cursor = ui->editorDeTexto->textCursor();
     int inicio = ui->editorDeTexto->textCursor().selectionStart();
     int longitud = ui->editorDeTexto->textCursor().selectedText().length();
 
@@ -16,7 +17,7 @@ void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharF
 
     cursor.mergeCharFormat(formato);
     cursor.clearSelection();
-    //cursor.setPosition(inicio + longitud, QTextCursor::MoveAnchor);
+    cursor.setPosition(inicio + longitud, QTextCursor::MoveAnchor);
 
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
@@ -25,45 +26,43 @@ void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharF
 
 void MainWindow::on_negrilla_clicked() //DONE
 {
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    QTextCharFormat formato = cursor.charFormat();
+
+    QTextCharFormat formato = ui->editorDeTexto->textCursor().charFormat();
     auto negrilla = [&formato]() {
         formato.setFontWeight(formato.fontWeight() == QFont::Bold ? QFont::Normal : QFont::Bold);
     };
-    aplicarFormatoAlTexto(negrilla, formato, cursor);
+    aplicarFormatoAlTexto(negrilla, formato);
 }
 
 
 
-void MainWindow::on_subrayar_clicked() //DONE
+void MainWindow::on_subrayar_clicked()
 {
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    QTextCharFormat formato = cursor.charFormat();
+
+    QTextCharFormat formato = ui->editorDeTexto->textCursor().charFormat();
     auto subrayado = [&formato]() {
         formato.setFontUnderline(!formato.fontUnderline());
     };
-    aplicarFormatoAlTexto(subrayado, formato, cursor);
+    aplicarFormatoAlTexto(subrayado, formato);
 }
 
-void MainWindow::on_cursiva_clicked() //DONE
+void MainWindow::on_cursiva_clicked()
 {
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    QTextCharFormat formato = cursor.charFormat();
+
+    QTextCharFormat formato = ui->editorDeTexto->textCursor().charFormat();
     auto cursiva = [&formato]() {
         formato.setFontItalic(!formato.font().italic());
     };
-    aplicarFormatoAlTexto(cursiva, formato, cursor);
+    aplicarFormatoAlTexto(cursiva, formato);
 }
 
-void MainWindow::on_tachado_clicked() //DONE
+void MainWindow::on_tachado_clicked()
 {
-
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    QTextCharFormat formato = cursor.charFormat();
+    QTextCharFormat formato = ui->editorDeTexto->textCursor().charFormat();
     auto tachado = [&formato]() {
         formato.setFontStrikeOut(!formato.fontStrikeOut());
     };
-    aplicarFormatoAlTexto(tachado, formato, cursor);
+    aplicarFormatoAlTexto(tachado, formato);
 }
 
 
@@ -72,24 +71,10 @@ void MainWindow::on_vinetas_clicked()
     QTextCursor cursor = ui->editorDeTexto->textCursor();
     cursor.insertText("• ");
     ui->editorDeTexto->setTextCursor(cursor);
-
-}
-
-QTextCharFormat formatoTemporal;
-
-void MainWindow::aplicarFormatoAlNuevoTexto(){
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-
-    if (formatoTemporal.hasProperty(QTextFormat::ForegroundBrush) && cursor.position() > 0) {
-        cursor.movePosition(QTextCursor::End);
-        cursor.insertText("\n", formatoTemporal);
-        ui->editorDeTexto->setTextCursor(cursor);
-    }
 }
 
 void MainWindow::on_color_clicked()
 {
-
     QColor color = QColorDialog::getColor(Qt::black , this, "Seleccionar color de fuente");
     QTextCursor cursor = ui->editorDeTexto->textCursor();
     QTextCharFormat formato = cursor.charFormat();
@@ -103,13 +88,11 @@ void MainWindow::on_color_clicked()
             cursor.mergeCharFormat(formato);
             ui->editorDeTexto->mergeCurrentCharFormat(formato);
         } else {
-            //ui->editorDeTexto->insertPlainText("  ");
-            //cursor.setPosition(inicio+2);
-            //cursor.movePosition(QTextCursor::StartOfWord, QTextCursor::KeepAnchor);
-            formatoTemporal.setForeground(color);
-            connect(ui->editorDeTexto, &QTextEdit::textChanged, this, &MainWindow::aplicarFormatoAlNuevoTexto);
-            //cursor.mergeCharFormat(formato);
-            //ui->editorDeTexto->mergeCurrentCharFormat(formato);
+            ui->editorDeTexto->insertPlainText("  ");
+            cursor.setPosition(inicio+2);
+            cursor.movePosition(QTextCursor::StartOfWord, QTextCursor::KeepAnchor);
+            cursor.mergeCharFormat(formato);
+            ui->editorDeTexto->mergeCurrentCharFormat(formato);
         }
     }
     inicio += longitud;
@@ -120,42 +103,27 @@ void MainWindow::on_color_clicked()
 }
 
 //--------------------    Tamaños
-void MainWindow::on_tamano_clicked()
-{
-    QTextCursor cursor = ui->editorDeTexto->textCursor();
-    QTextCharFormat formato = cursor.charFormat();
-    int inicio = (ui->editorDeTexto->textCursor().selectionStart()) + (ui->editorDeTexto->textCursor().selectedText().length());
-    if (cursor.hasSelection()) {
-        formato.setFontPointSize(ui->tamanoLetra->value());
-        cursor.mergeCharFormat(formato);
-    } else {
-        cursor.select(QTextCursor::Document);
-        formato.setFontPointSize(ui->tamanoLetra->value());
-        cursor.mergeCharFormat(formato);
-    }
-    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
-    cursor.clearSelection();
-    ui->editorDeTexto->setTextCursor(cursor);
-    ui->editorDeTexto->setFocus();
-}
 
 void MainWindow::tamanoDeLetra(int nuevoTamano) {
     QTextCursor cursor = ui->editorDeTexto->textCursor();
     QTextCharFormat formato = cursor.charFormat();
-    formato.setFontPointSize(nuevoTamano);
+    int inicio = (ui->editorDeTexto->textCursor().selectionStart()) + (ui->editorDeTexto->textCursor().selectedText().length());
 
     if (cursor.hasSelection()) {
+        formato.setFontPointSize(nuevoTamano);
         cursor.mergeCharFormat(formato);
     } else {
         cursor.select(QTextCursor::Document);
+        formato.setFontPointSize(nuevoTamano);
         cursor.mergeCharFormat(formato);
-        cursor.clearSelection();
     }
 
+    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
+    cursor.clearSelection();
     ui->tamanoLetra->setValue(nuevoTamano);
-
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
+    ui->tamanoDeLetra->setEditText(QString::number(nuevoTamano));
 }
 
 void MainWindow::on_tamanoLetra_valueChanged(int arg1)

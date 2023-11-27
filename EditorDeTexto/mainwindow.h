@@ -3,9 +3,6 @@
 
 #include <QMainWindow>
 #include <QPushButton>
-
-#include <functional>
-
 #include <QApplication>
 #include <QString>
 #include <QDebug>
@@ -19,13 +16,10 @@
 #include <QPrinter>
 #include <QFontDatabase>
 #include <QColorDialog>
-#include <QKeyEvent>
-#include <QImage>
 #include <QStandardItemModel>
-
-
 #include <QTextEdit>
 #include <QVBoxLayout>
+#include <functional>
 
 
 QT_BEGIN_NAMESPACE
@@ -48,13 +42,11 @@ public:
 
     void guardarPDF(QString direccionArchivo);
 
-    //void contextMenuEvent(QContextMenuEvent *event) override;
-
 private:
     QPushButton *tipoTriggerButton;
 
 protected:
-    void keyPressEvent(QKeyEvent *evento) override;
+    //void keyPressEvent(QKeyEvent *evento) override;
 
 private slots:
     //funcionesArchivos
@@ -72,10 +64,24 @@ private slots:
 
     void on_guardar_clicked();
 
-    //editarTexto
-    void aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato, QTextCursor &cursor);
+    void on_nuevoArchivo_clicked();
 
-    void aplicarFormatoAlNuevoTexto();
+    void on_abrirArchivo_clicked();
+
+    void on_imprimirArchivo_clicked();
+
+    void on_guardarArchivo_clicked();
+
+    void on_guardarHTML_clicked();
+
+    void on_salirPrograma_clicked();
+
+    void on_eliminarArchivo_clicked();
+
+    void on_actionEliminar_triggered();
+
+    //editarTexto
+    void aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato);
 
     void on_subrayar_clicked();
 
@@ -84,8 +90,6 @@ private slots:
     void on_cursiva_clicked();
 
     void on_color_clicked();
-
-    void on_tamano_clicked();
 
     void on_alineadoCentrado_clicked();
 
@@ -97,13 +101,13 @@ private slots:
 
     void on_tachado_clicked();
 
+    void on_vinetas_clicked();
+
     void tamanoDeLetra(int nuevoTamano);
 
     void on_aumentarTamano_clicked();
 
     void on_disminuirTamano_clicked();
-
-    void on_actionEliminar_triggered();
 
     void on_fuentes_currentFontChanged(const QFont &f);
 
@@ -116,28 +120,15 @@ private slots:
 
     void on_actionAcerca_del_Auto_triggered();
 
+    void on_info_clicked();
+
     void on_tamanoLetra_valueChanged(int arg1);
 
     void on_tamanoDeLetra_currentIndexChanged(int index);
 
     //Falta organizar
-    void on_nuevoArchivo_clicked();
 
-    void on_abrirArchivo_clicked();
 
-    void on_imprimirArchivo_clicked();
-
-    void on_guardarArchivo_clicked();
-
-    void on_guardarHTML_clicked();
-
-    void on_info_clicked();
-
-    void on_salirPrograma_clicked();
-
-    void on_eliminarArchivo_clicked();
-
-    void on_vinetas_clicked();
 
 private:
     Ui::VentanaPrincipal *ui;
