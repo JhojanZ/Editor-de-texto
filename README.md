@@ -1,5 +1,6 @@
 # Editor de Texto con QT 
 
+
 ## Descripción
 Este proyecto universitario es un editor de texto simple desarrollado con el framework Qt. El editor proporciona una interfaz gráfica simple que permite a los usuarios crear, abrir, editar y guardar archivos de texto. Diseñado para ser fácil de usar, el editor aprovecha las capacidades de Qt para ofrecer todas las caracteristicas necesarias de un editor de texto.
 
@@ -13,8 +14,9 @@ El editor de texto desarrollado con Qt ofrece las siguientes funcionalidades pri
 ## Tecnologias Usadas
 - C++
 - **Qt 6.5.3** (puedes descargarlo [aquí](https://www.qt.io/download-qt-installer-oss?hsCtaTracking=99d9dd4f-5681-48d2-b096-470725510d34%7C074ddad0-fdef-4e53-8aa8-5e8a876d6ab4))
-## Avance
-<!-- Colocar imganes del proyecto -->
+## Avance   
+![1captura](https://github.com/JhojanZ/Editor-de-texto/assets/135383652/dc646956-96af-4528-9aa4-6b4b1ea2b125)
+![2captura](https://github.com/JhojanZ/Editor-de-texto/assets/135383652/cd858236-6810-40ba-b10d-b61b31e19adc)
 
 ## Instrucciones de Compilación
 Para compilar el proyecto, sigue estos pasos:
@@ -32,14 +34,24 @@ El código fuente se organiza en varios archivos dentro de la misma clase `mainw
 - La dirección del archivo se guarda en la variable global de tipo QString`direccionArchivo`.
 - Ejemplo:
 ```
-void MainWindow::guardarArchivo(QString direccionArchivo){
-    QFile archivo(direccionArchivo);
-    if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QTextStream insertar(&archivo);
-        insertar<<ui->editorDeTexto->toHtml();
-        archivo.close();
-    } else {
-        QMessageBox::critical(this, "Error", "No se pudo crear el archivo.");
+
+void MainWindow::on_abrirArchivo_clicked()
+{
+    direccionArchivo = QFileDialog::getOpenFileName(this, "Abrir Archivo", QDir::homePath());
+    if (!direccionArchivo.isEmpty()) {
+        QFile archivo(direccionArchivo);
+        if(archivo.open(QIODevice::ReadOnly | QIODevice::Text)){
+            QTextStream in(&archivo);
+            if(archivo.size() == 0){
+                QMessageBox::information(this, "Archivo vacío", "El archivo está vacío.");
+            }else{
+                QString contenidoDelArchivo = in.readAll();
+                ui->editorDeTexto->setPlainText(contenidoDelArchivo);
+            }
+            archivo.close();
+        }else {
+            QMessageBox::critical(this, "Error", "No se pudo abrir el archivo.");
+        }
     }
 }
 ```
@@ -47,24 +59,23 @@ void MainWindow::guardarArchivo(QString direccionArchivo){
 - Aquí se encuentran funciones responsables de la manipulación del texto dentro del QTextEdit (nombrado como `editorDeTexto`) en la libreria QTextEdit. Esto incluye funciones para agregar como tamaño, color, fuentes, entre otros.
 - Ejemplo:
 ```
-void MainWindow::alinear(Qt::AlignmentFlag modo){
+void MainWindow::aplicarFormatoAlTexto(std::function<void()> funcion, QTextCharFormat &formato) {
     QTextCursor cursor = ui->editorDeTexto->textCursor();
-    int inicio = (ui->editorDeTexto->textCursor().selectionStart()) + (ui->editorDeTexto->textCursor().selectedText().length());
-    if (cursor.hasSelection()) {
-        QTextBlockFormat formatoDelBloque = cursor.blockFormat();
-        formatoDelBloque.setAlignment(modo);
-        cursor.mergeBlockFormat(formatoDelBloque);
+    int inicio = ui->editorDeTexto->textCursor().selectionStart();
+    int longitud = ui->editorDeTexto->textCursor().selectedText().length();
+
+    if (longitud > 0) {
+        cursor.setPosition(inicio);
+        cursor.setPosition(inicio + longitud, QTextCursor::KeepAnchor);
     } else {
-        QTextCursor inicioDelBloque = cursor;
-        inicioDelBloque.movePosition(QTextCursor::StartOfBlock);
-        cursor.movePosition(QTextCursor::EndOfBlock);
-        QTextBlockFormat formatoDelBloque = inicioDelBloque.blockFormat();
-        formatoDelBloque.setAlignment(modo);
-        inicioDelBloque.setBlockFormat(formatoDelBloque);
-        cursor.setBlockFormat(formatoDelBloque);
+        cursor.select(QTextCursor::WordUnderCursor);
     }
-    cursor.setPosition(inicio, QTextCursor::MoveAnchor);
+    funcion();
+
+    cursor.mergeCharFormat(formato);
     cursor.clearSelection();
+    cursor.setPosition(inicio + longitud, QTextCursor::MoveAnchor);
+
     ui->editorDeTexto->setTextCursor(cursor);
     ui->editorDeTexto->setFocus();
 }
